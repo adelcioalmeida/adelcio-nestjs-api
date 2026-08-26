@@ -1,98 +1,355 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🔐 Adelcio NestJS API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API backend desenvolvida com **NestJS**, **TypeScript**, **Prisma ORM** e **MySQL**, com foco em estudo e prática de autenticação de usuários.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+O projeto implementa cadastro, login, geração de token JWT, criptografia de senhas e proteção de rotas.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🚀 Tecnologias utilizadas
 
-## Project setup
+- Node.js
+- TypeScript
+- NestJS
+- MySQL
+- Prisma ORM
+- JWT
+- Passport
+- Passport JWT
+- bcrypt
+- Swagger / OpenAPI
+- class-validator
+- class-transformer
+- npm
+- Git
+- GitHub
 
-```bash
-$ npm install
+---
+
+## 🎯 Objetivo do projeto
+
+Este projeto foi desenvolvido para praticar conceitos relacionados ao desenvolvimento backend, principalmente:
+
+- Criação de APIs REST
+- NestJS
+- TypeScript
+- Banco de dados relacional
+- Prisma ORM
+- Autenticação
+- JWT
+- Criptografia de senhas
+- Proteção de rotas
+- DTOs
+- Validação de dados
+- Swagger
+- Variáveis de ambiente
+- Git e GitHub
+
+---
+
+## ⚙️ Funcionalidades
+
+Atualmente a API possui:
+
+- Cadastro de usuários
+- Validação de e-mail já cadastrado
+- Criptografia de senha utilizando bcrypt
+- Login utilizando e-mail e senha
+- Validação da senha criptografada
+- Geração de token JWT
+- Rota protegida utilizando JWT
+- Integração com MySQL através do Prisma
+- Validação dos dados recebidos pela API
+- Documentação dos endpoints com Swagger
+
+---
+
+## 📡 Endpoints
+
+### Cadastro
+
+```http
+POST /auth/cadastro
 ```
 
-## Compile and run the project
+Exemplo:
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```json
+{
+  "nome": "Adelcio",
+  "email": "adelcio@email.com",
+  "senha": "123456"
+}
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+### Login
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```http
+POST /auth/login
 ```
 
-## Deployment
+Exemplo:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+```json
+{
+  "email": "adelcio@email.com",
+  "senha": "123456"
+}
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Quando as credenciais estão corretas, a API retorna um token JWT.
 
-## Resources
+Exemplo:
 
-Check out a few resources that may come in handy when working with NestJS:
+```json
+{
+  "access_token": "TOKEN_JWT",
+  "usuario": {
+    "id": 1,
+    "nome": "Adelcio",
+    "email": "adelcio@email.com"
+  }
+}
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+---
 
-## Support
+### Perfil protegido
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```http
+GET /auth/perfil
+```
 
-## Stay in touch
+Essa rota utiliza autenticação JWT.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+O usuário precisa enviar um token válido para conseguir acessar o endpoint.
 
-## License
+---
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 🗄️ Banco de dados
+
+O projeto utiliza **MySQL** como banco de dados.
+
+A comunicação entre a aplicação e o banco é realizada utilizando o **Prisma ORM**.
+
+### Model de usuário
+
+```prisma
+model Usuario {
+  id    Int    @id @default(autoincrement())
+  nome  String
+  email String @unique
+  senha String
+}
+```
+
+O campo `email` é único para impedir o cadastro de usuários duplicados.
+
+---
+
+## 🔒 Segurança
+
+### Criptografia de senha
+
+Antes de salvar uma senha no banco de dados, a aplicação utiliza o **bcrypt** para gerar um hash.
+
+Dessa forma, a senha original não fica armazenada diretamente no banco.
+
+---
+
+### JWT
+
+Após um login válido, a aplicação gera um **JSON Web Token (JWT)**.
+
+O token contém informações utilizadas para identificar o usuário durante o acesso às rotas protegidas.
+
+---
+
+## 🛡️ Proteção de rotas
+
+A rota:
+
+```http
+GET /auth/perfil
+```
+
+é protegida utilizando um `JwtAuthGuard`.
+
+Somente requisições autenticadas com um token JWT válido podem acessá-la.
+
+---
+
+## ✅ Validação de dados
+
+A aplicação utiliza:
+
+- class-validator
+- class-transformer
+- ValidationPipe
+
+O `ValidationPipe` está configurado globalmente para validar os dados recebidos pela API.
+
+Também são rejeitados campos que não fazem parte dos DTOs esperados.
+
+---
+
+## 📖 Swagger
+
+A documentação da API é gerada utilizando Swagger/OpenAPI.
+
+Depois de iniciar o projeto, acesse:
+
+```text
+http://localhost:3000/api
+```
+
+Na interface do Swagger é possível visualizar e testar os endpoints da API.
+
+---
+
+## 📁 Estrutura principal
+
+```text
+adelcio-nestjs-api/
+│
+├── prisma/
+│   └── schema.prisma
+│
+├── src/
+│   ├── auth/
+│   │   ├── dto/
+│   │   ├── guards/
+│   │   ├── strategies/
+│   │   ├── auth.controller.ts
+│   │   ├── auth.module.ts
+│   │   └── auth.service.ts
+│   │
+│   ├── prisma/
+│   │
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   └── main.ts
+│
+├── test/
+├── .env.example
+├── .gitignore
+├── package.json
+├── prisma.config.ts
+└── tsconfig.json
+```
+
+---
+
+## ▶️ Como executar o projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/adelcioalmeida/adelcio-nestjs-api.git
+```
+
+### 2. Entre na pasta
+
+```bash
+cd adelcio-nestjs-api
+```
+
+### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+### 4. Configure as variáveis de ambiente
+
+Utilize o arquivo:
+
+```text
+.env.example
+```
+
+como referência para criar seu arquivo:
+
+```text
+.env
+```
+
+Configure a conexão com o banco de dados e as demais variáveis necessárias.
+
+---
+
+### 5. Gere o Prisma Client
+
+```bash
+npx prisma generate
+```
+
+### 6. Execute as migrations
+
+```bash
+npx prisma migrate dev
+```
+
+### 7. Inicie a aplicação
+
+```bash
+npm run start:dev
+```
+
+A aplicação estará disponível em:
+
+```text
+http://localhost:3000
+```
+
+E o Swagger em:
+
+```text
+http://localhost:3000/api
+```
+
+---
+
+## 🧪 Testes
+
+O projeto possui configuração para testes utilizando Jest.
+
+Executar testes:
+
+```bash
+npm run test
+```
+
+Executar testes E2E:
+
+```bash
+npm run test:e2e
+```
+
+Verificar cobertura:
+
+```bash
+npm run test:cov
+```
+
+---
+
+## 📌 Status do projeto
+
+🚧 **Em desenvolvimento**
+
+O projeto continuará recebendo melhorias conforme o avanço dos estudos em desenvolvimento backend.
+
+---
+
+## 👨‍💻 Autor
+
+**Adelcio Almeida**
+
+Tecnólogo em Análise e Desenvolvimento de Sistemas.
+
+GitHub:  
+https://github.com/adelcioalmeida
